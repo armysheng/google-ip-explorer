@@ -79,8 +79,8 @@ def get_available_google_ips(seeds, threads=None, max=None):
         for ip, dt in results:
             if dt > 0:
                 available_ips.append((ip, dt))
-    sorted_ips = map(lambda x: x[0], 
-                     sorted(available_ips, 
+    sorted_ips = map(lambda x: x[0],
+                     sorted(available_ips,
                             lambda (_, a), (__, b): bi_value(a-b)))
     return sorted_ips[:max]
 
@@ -118,7 +118,7 @@ def _main():
         seeds = fr.readlines()
     google_ips = get_available_google_ips(seeds, threads, args.max)
     with open(output, 'w') as fw:
-        fw.write('|'.join(google_ips))
+        fw.write('\n'.join(google_ips))
 
 if __name__ == '__main__':
     _main()
